@@ -12,6 +12,13 @@ var specialCharactersArray = ['!', '@', '#', '$', '%', '^', '&','*'];
 
 console.log(lowercaseArray, uppercaseArray, numbersArray, specialCharactersArray); 
 
+// // Get references to the #generate element
+
+var generateBtn = document.querySelector("#generate");
+generateBtn.addEventListener("click", writePassword);
+
+var writePassword; 
+
 // PASSWORD LENGTH PROMPT
 
 var passwordLength; 
@@ -22,23 +29,40 @@ var lengthPrompt = function() {
 
 passwordLength = lengthPrompt(); 
 
+// PASSWORD LENGTH ENTRY VALIDATION
+
 if (isNaN(passwordLength)) {
   window.alert('Please enter a number between 8-128');
   passwordLength = lengthPrompt(); 
-} else if (passwordLength <8) {
+} else if (passwordLength < 8) {
   window.alert('Please enter a number greater than 8 and less than 128');
   passwordLength = lengthPrompt();  
-} else if (passwordLength) >128) {
+} else if (passwordLength > 128) {
   window.alert('Please enter a number less than 128 and more than 8'); 
   passwordLength = lengthPrompt(); 
 }
 
 console.log(passwordLength); 
 
+// LOWERCASE PROMPT
+
+var includeLowercase; 
+
+var lowercasePrompt = function() {
+  return window.prompt('Would you like to include lowercase characters in your password? Please answer yes or no.'); 
+}
+
+includeLowercase = lowercasePrompt(); 
+
+if (includeLowercase !== 'yes', 'no') {
+  window.alert('Please enter either yes or no.'); 
+  includeLowercase = lengthPrompt(); 
+}
+
+console.log(includeLowercase); 
 // function passwordLengthConfirm(lengthPrompt) {
 
 // }
-// Write JS to select only between 8-128 characters, including error message. 
 
 // write this first
 
@@ -46,8 +70,8 @@ console.log(passwordLength);
 
 // // Write JS for include/exclude certain characters using if/them statements
 
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
+
+
 
 // // Write password to the #password input
 // function writePassword() {
@@ -57,6 +81,3 @@ console.log(passwordLength);
 //   passwordText.value = password;
 
 // }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
