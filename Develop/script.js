@@ -35,7 +35,7 @@ const generatePassword = () => {
   // PASSWORD LENGTH ENTRY VALIDATION
 
   while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    window.alert('Please enter a number between 8-128');
+    window.alert('Please enter a number between 8-128.');
     passwordLength = lengthPrompt();
   }
 
@@ -62,12 +62,6 @@ let lowercasePrompt = function() {
 
   console.log(includeLowercase); 
 
-  // For loop randomizes characterOptions array until desired password length is reached.
-
-  // for (let index = 0; index < passwordLength-1; index++) {
-  //   password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
-  // }
-
 
 // UPPERCASE PROMPT
 
@@ -79,7 +73,7 @@ let uppercasePrompt = function() {
 
 includeUppercase = uppercasePrompt(); 
 
-// If user selects 'OK' to include uppercase characters, next section adds uppercaseArray to the empty characterOptions array and randomizes into empty password array. 
+// If user selects 'OK' to include uppercase characters, next section adds uppercaseArray to the characterOptions array and randomizes into password array. 
 
 if (includeUppercase) {
   characterOptions = characterOptions.concat(uppercaseArray); 
@@ -90,9 +84,35 @@ if (includeUppercase) {
 
 console.log(includeUppercase); 
 
-// For loop randomizes characterOptions (potentially both upper and lowercase letters) array until desired password length is reached.
 
-for (let index = 0; index < passwordLength-1; index++) {
+
+// NUMBERS PROMPT
+
+let includeNumbers;  
+
+let numbersPrompt = function() {
+  return window.confirm('Would you like to include numbers in your password? Click OK for yes, Cancel for no.');
+}
+
+includeNumbers = numbersPrompt(); 
+
+// If user selects 'OK' to include numbers characters, next section adds numbersArray to the characterOptions array and randomizes into password array. 
+
+if (includeNumbers) {
+  characterOptions = characterOptions.concat(numbersArray); 
+  password.push(numbersArray[Math.floor(Math.random() * numbersArray.length)]); 
+  console.log(password); 
+  console.log(characterOptions); 
+}
+
+console.log(includeNumbers); 
+
+
+  // For loop randomizes characterOptions array until desired password length is reached. Still having trouble figuring out
+  // how to make the password the correct length - maybe do a for loop for all the parameters?
+
+
+for (let index = 0; index < passwordLength-3; index++) {
   password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
 }
 
