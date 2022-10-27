@@ -13,12 +13,12 @@ Password is displayed in alert or on page */
 const generatePassword = () => {
 
   // ARRAY VALUES //
-  var lowercaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var uppercaseArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']; 
-  var numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var specialCharactersArray = ['!', '@', '#', '$', '%', '^', '&','*'];
-  var characterOptions = []; 
-  var password = []; 
+  let lowercaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  let uppercaseArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']; 
+  let numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let specialCharactersArray = ['!', '@', '#', '$', '%', '^', '&','*'];
+  let characterOptions = []; 
+  let password = []; 
 
   var writePassword; 
 
@@ -43,9 +43,9 @@ const generatePassword = () => {
 
   // LOWERCASE PROMPT
 
-  var includeLowercase; 
+let includeLowercase; 
 
-  var lowercasePrompt = function() {
+let lowercasePrompt = function() {
     return window.confirm('Would you like to include lowercase characters in your password? Click OK for yes, Cancel for no.');
   }
 
@@ -64,11 +64,39 @@ const generatePassword = () => {
 
   // For loop randomizes characterOptions array until desired password length is reached.
 
-  for (let index = 0; index < passwordLength-1; index++) {
-    password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
-  }
+  // for (let index = 0; index < passwordLength-1; index++) {
+  //   password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
+  // }
 
-  return password.join(''); 
+
+// UPPERCASE PROMPT
+
+let includeUppercase;  
+
+let uppercasePrompt = function() {
+  return window.confirm('Would you like to include uppercase characters in your password? Click OK for yes, Cancel for no.');
+}
+
+includeUppercase = uppercasePrompt(); 
+
+// If user selects 'OK' to include uppercase characters, next section adds uppercaseArray to the empty characterOptions array and randomizes into empty password array. 
+
+if (includeUppercase) {
+  characterOptions = characterOptions.concat(uppercaseArray); 
+  password.push(uppercaseArray[Math.floor(Math.random() * uppercaseArray.length)]); 
+  console.log(password); 
+  console.log(characterOptions); 
+}
+
+console.log(includeUppercase); 
+
+// For loop randomizes characterOptions (potentially both upper and lowercase letters) array until desired password length is reached.
+
+for (let index = 0; index < passwordLength-1; index++) {
+  password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
+}
+
+return password.join(''); 
 
 }
 
