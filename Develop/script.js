@@ -22,6 +22,8 @@ const generatePassword = () => {
 
   var writePassword; 
 
+
+
   // PASSWORD LENGTH PROMPT
 
   var passwordLength; 
@@ -40,6 +42,8 @@ const generatePassword = () => {
   }
 
   console.log(passwordLength); 
+
+
 
   // LOWERCASE PROMPT
 
@@ -61,6 +65,7 @@ let lowercasePrompt = function() {
   }
 
   console.log(includeLowercase); 
+
 
 
 // UPPERCASE PROMPT
@@ -108,11 +113,37 @@ if (includeNumbers) {
 console.log(includeNumbers); 
 
 
+
+// SPECIAL CHARACTERS PROMPT  
+
+let includeSpChar;  
+
+let spcharPrompt = function() {
+  return window.confirm('Would you like to include special characters in your password? Click OK for yes, Cancel for no.');
+}
+
+includeSpChar = spcharPrompt(); 
+
+// If user selects 'OK' to include special characters, next section adds specialCharactersArray to the characterOptions array and randomizes into password array. 
+
+if (includeSpChar) {
+  characterOptions = characterOptions.concat(specialCharactersArray); 
+  password.push(specialCharactersArray[Math.floor(Math.random() * specialCharactersArray.length)]); 
+  console.log(password); 
+  console.log(characterOptions); 
+}
+
+console.log(includeSpChar); 
+
+
+
+
+
   // For loop randomizes characterOptions array until desired password length is reached. Still having trouble figuring out
   // how to make the password the correct length - maybe do a for loop for all the parameters?
 
 
-for (let index = 0; index < passwordLength-3; index++) {
+for (let index = 0; index < passwordLength; index++) {
   password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
 }
 
