@@ -1,14 +1,9 @@
-/* Password needs to be between 8-128 characters
-Confirm whether or not to use lowercase, uppercase, numeric, special characters
-Input to each prompt should be verified and one type of character should be selected
-Password is displayed in alert or on page */
+/* Password needs to be between 8-128 characters.
+Confirm whether or not to use lowercase, uppercase, numeric, special characters.
+Input to each prompt should be verified and one type of character should be selected.
+Password is displayed in alert or on page. */
 
 
-// // Get references to the #generate element
-
-// function passwordLengthConfirm(lengthPrompt) {
-
-// }
 
 const generatePassword = () => {
 
@@ -18,10 +13,8 @@ const generatePassword = () => {
   let numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   let specialCharactersArray = ['!', '@', '#', '$', '%', '^', '&','*'];
   let characterOptions = []; 
+  let arrayOptions = []; 
   let password = []; 
-
-  var writePassword; 
-
 
 
   // PASSWORD LENGTH PROMPT
@@ -55,13 +48,15 @@ let lowercasePrompt = function() {
 
   includeLowercase = lowercasePrompt(); 
 
-  // If user selects 'OK' to include lowercase characters, next section adds lowerCaseArray to the empty characterOptions array and randomizes into empty password array. 
+  // If user selects 'OK' to include lowercase characters, this adds lowerCaseArray to the empty characterOptions array, pushes one character to password, and adds 'lowercase' value to arrayOptions. 
 
   if (includeLowercase) {
     characterOptions = characterOptions.concat(lowercaseArray); 
     password.push(lowercaseArray[Math.floor(Math.random() * lowercaseArray.length)]); 
+    arrayOptions.push('lowercase'); 
     console.log(password); 
     console.log(characterOptions); 
+    console.log(arrayOptions); 
   }
 
   console.log(includeLowercase); 
@@ -78,13 +73,15 @@ let uppercasePrompt = function() {
 
 includeUppercase = uppercasePrompt(); 
 
-// If user selects 'OK' to include uppercase characters, next section adds uppercaseArray to the characterOptions array and randomizes into password array. 
+// If user selects 'OK' to include uppercase characters, next section adds uppercaseArray to the characterOptions array,pushes one character to password, and adds 'uppercase' value to arrayOptions.
 
 if (includeUppercase) {
   characterOptions = characterOptions.concat(uppercaseArray); 
   password.push(uppercaseArray[Math.floor(Math.random() * uppercaseArray.length)]); 
+  arrayOptions.push('uppercase'); 
   console.log(password); 
   console.log(characterOptions); 
+  console.log(arrayOptions); 
 }
 
 console.log(includeUppercase); 
@@ -101,13 +98,15 @@ let numbersPrompt = function() {
 
 includeNumbers = numbersPrompt(); 
 
-// If user selects 'OK' to include numbers characters, next section adds numbersArray to the characterOptions array and randomizes into password array. 
+// If user selects 'OK' to include numbers characters, next section adds numbersArray to the characterOptions array, pushes one character to password, and adds 'numbers' value to arrayOptions.
 
 if (includeNumbers) {
   characterOptions = characterOptions.concat(numbersArray); 
   password.push(numbersArray[Math.floor(Math.random() * numbersArray.length)]); 
+  arrayOptions.push('numbers'); 
   console.log(password); 
   console.log(characterOptions); 
+  console.log(arrayOptions); 
 }
 
 console.log(includeNumbers); 
@@ -118,19 +117,21 @@ console.log(includeNumbers);
 
 let includeSpChar;  
 
-let spcharPrompt = function() {
+let spCharPrompt = function() {
   return window.confirm('Would you like to include special characters in your password? Click OK for yes, Cancel for no.');
 }
 
-includeSpChar = spcharPrompt(); 
+includeSpChar = spCharPrompt(); 
 
-// If user selects 'OK' to include special characters, next section adds specialCharactersArray to the characterOptions array and randomizes into password array. 
+// If user selects 'OK' to include special characters, next section adds specialCharactersArray to the characterOptions array, pushes one character to password, and adds 'special' value to arrayOptions.
 
 if (includeSpChar) {
   characterOptions = characterOptions.concat(specialCharactersArray); 
   password.push(specialCharactersArray[Math.floor(Math.random() * specialCharactersArray.length)]); 
+  arrayOptions.push('special'); 
   console.log(password); 
   console.log(characterOptions); 
+  console.log(arrayOptions); 
 }
 
 console.log(includeSpChar); 
@@ -138,14 +139,30 @@ console.log(includeSpChar);
 
 
 
+// In order to make sure that the generated password included at least one of each character type selected, I pushed one character to the password upon selecting OK. 
+// Below, I am using the arrayOptions value to determine how many characters are needed to meet the passwordLength chosen in the first prompt. 
+// For loop randomizes characterOptions array until desired password length is reached.
 
-  // For loop randomizes characterOptions array until desired password length is reached. Still having trouble figuring out
-  // how to make the password the correct length - maybe do a for loop for all the parameters?
-
-
-for (let index = 0; index < passwordLength; index++) {
-  password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
+if (arrayOptions.length === 4){ 
+  for (let index = 0; index < passwordLength - 4; index++) {
+    password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
+  }
+} else if (arrayOptions.length === 3) {
+  for (let index = 0; index < passwordLength - 3; index++) {
+    password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
+  }
+} else if (arrayOptions.length === 2) {
+  for (let index=0; index < passwordLength - 2; index++) {
+    password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]);
+  }
+} else if (arrayOptions.length ===1) {
+  for (let index = 0; index < passwordLength - 1; index++) {
+    password.push(characterOptions[Math.floor(Math.random() * characterOptions.length)]); 
+  }
+} else {
+  window.alert('You have not chosen to include any characters. Please choose at least one option to generate a password.')
 }
+
 
 return password.join(''); 
 
@@ -153,8 +170,7 @@ return password.join('');
 
 
 
-
-// // Write password to the #password input
+// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
