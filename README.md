@@ -25,7 +25,7 @@ This application is for potential employers and fellow developers to view my wor
 
 ![Website Sample](./Develop/Assets/Password_Generator.gif)
 
-https://ecussler.github.io/hello-im-elena/
+https://ecussler.github.io/password-generator/
 
 
 ## Credits
