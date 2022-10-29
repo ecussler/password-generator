@@ -23,7 +23,7 @@ NA
 
 This application is for potential employers and fellow developers to view my work and get a secure password if they need it!
 
-![Website Sample](./Develop/Assets/Password_Generator.gif)
+![Website Sample](./assets/photos/Password_Generator.gif)
 
 https://ecussler.github.io/password-generator/
 
