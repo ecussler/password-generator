@@ -34,9 +34,6 @@ const generatePassword = () => {
     passwordLength = lengthPrompt();
   }
 
-  console.log(passwordLength); 
-
-
 
   // LOWERCASE PROMPT
 
@@ -54,12 +51,7 @@ let lowercasePrompt = function() {
     characterOptions = characterOptions.concat(lowercaseArray); 
     password.push(lowercaseArray[Math.floor(Math.random() * lowercaseArray.length)]); 
     arrayOptions.push('lowercase'); 
-    console.log(password); 
-    console.log(characterOptions); 
-    console.log(arrayOptions); 
   }
-
-  console.log(includeLowercase); 
 
 
 
@@ -78,13 +70,9 @@ includeUppercase = uppercasePrompt();
 if (includeUppercase) {
   characterOptions = characterOptions.concat(uppercaseArray); 
   password.push(uppercaseArray[Math.floor(Math.random() * uppercaseArray.length)]); 
-  arrayOptions.push('uppercase'); 
-  console.log(password); 
-  console.log(characterOptions); 
-  console.log(arrayOptions); 
+  arrayOptions.push('uppercase');  
 }
 
-console.log(includeUppercase); 
 
 
 
@@ -104,13 +92,7 @@ if (includeNumbers) {
   characterOptions = characterOptions.concat(numbersArray); 
   password.push(numbersArray[Math.floor(Math.random() * numbersArray.length)]); 
   arrayOptions.push('numbers'); 
-  console.log(password); 
-  console.log(characterOptions); 
-  console.log(arrayOptions); 
 }
-
-console.log(includeNumbers); 
-
 
 
 // SPECIAL CHARACTERS PROMPT  
@@ -129,13 +111,7 @@ if (includeSpChar) {
   characterOptions = characterOptions.concat(specialCharactersArray); 
   password.push(specialCharactersArray[Math.floor(Math.random() * specialCharactersArray.length)]); 
   arrayOptions.push('special'); 
-  console.log(password); 
-  console.log(characterOptions); 
-  console.log(arrayOptions); 
 }
-
-console.log(includeSpChar); 
-
 
 
 
