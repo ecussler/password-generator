@@ -17,6 +17,7 @@ const generatePassword = () => {
   let password = []; 
 
 
+
   // PASSWORD LENGTH PROMPT
 
   var passwordLength; 
@@ -35,6 +36,7 @@ const generatePassword = () => {
   }
 
 
+  
   // LOWERCASE PROMPT
 
 let includeLowercase; 
@@ -72,7 +74,6 @@ if (includeUppercase) {
   password.push(uppercaseArray[Math.floor(Math.random() * uppercaseArray.length)]); 
   arrayOptions.push('uppercase');  
 }
-
 
 
 
